@@ -1,14 +1,16 @@
 # nemo-dim-hidden
 
 A [nemo-python](https://github.com/linuxmint/nemo-python) extension that dims
-hidden files (dotfiles) in Nemo's **list and compact views**.
+hidden files (dotfiles) in Nemo's **list view**.
 
 Nemo already dims hidden files in icon view out of the box. This extension
-brings the same visual treatment to the other two views, greying out the Name,
-Size, Type, Date Modified columns (and any other text columns you have enabled)
+brings the same visual treatment to list view, greying out the Name, Size,
+Type, Date Modified columns (and any other text columns you have enabled)
 for every file whose name starts with `.`.
 
-![screenshot placeholder](screenshot.png)
+> **Compact view**: Nemo natively dims the file icon in compact view (50 %
+> opacity). The text labels there are rendered on an EelCanvas with no Python
+> API, so this extension cannot affect them.
 
 ## Requirements
 
