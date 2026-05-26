@@ -1,11 +1,15 @@
 #!/usr/bin/python3
 """
-nemo-dim-hidden — dim hidden files in Nemo list / compact view
+nemo-dim-hidden — dim hidden files in Nemo list view
 
 Nemo already dims hidden files in icon view (built-in).  This extension
-brings the same behaviour to list and compact views by hooking into every
-text cell renderer and setting it to the GTK "insensitive" state for rows
-whose filename starts with '.'.
+brings the same behaviour to list view by hooking into every text cell
+renderer and setting it to the GTK "insensitive" state for rows whose
+filename starts with '.'.
+
+Compact view (NemoIconViewContainer) uses an EelCanvas-based renderer with
+no GIR bindings and no Python-accessible item API, so it cannot be supported
+from a Python extension.  Nemo already dims the file icon there natively.
 
 Tested on Nemo 6.2 / Linux Mint.  Requires the nemo-python package.
 
