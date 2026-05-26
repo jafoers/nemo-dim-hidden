@@ -24,6 +24,7 @@ sudo apt install nemo-python   # Debian / Ubuntu / Mint
 ## Installation
 
 ```bash
+mkdir -p ~/.local/share/nemo-python/extensions/
 cp nemo-dim-hidden.py ~/.local/share/nemo-python/extensions/
 nemo -q && nemo
 ```
