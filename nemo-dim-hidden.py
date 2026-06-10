@@ -61,7 +61,7 @@ class HiddenFileDimmer(GObject.GObject,
     # ---- InfoProvider stub -----------------------------------------------
     # Required so nemo-python actually instantiates this class; the method
     # itself does nothing beyond satisfying the interface.
-    def update_file_info(self, file, update_complete, handle):
+    def update_file_info(self, file, update_complete=None, handle=None):
         return Nemo.OperationResult.COMPLETE
 
     # ---- setup --------------------------------------------------------------
