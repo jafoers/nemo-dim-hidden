@@ -136,13 +136,18 @@ class HiddenFileDimmer(GObject.GObject,
     def _cell_data(self, col, renderer, model, it, data):
         fname_col, text_col = data
         try:
-            # Don't interfere while the user is typing a new filename.
-            if renderer.props.editing:
-                return
-
             # Reproduce the text Nemo would have shown via its attribute binding.
+            # This MUST run on every row, including while a rename is active.
+            # The CellRendererText is a single object shared across all rows, so
+            # if we skipped this during editing the renderer would keep the
+            # edited row's 'text' and paint it onto every other row.
             text = model.get_value(it, text_col)
             renderer.set_property('text', str(text) if text is not None else '')
+
+            # Don't touch sensitivity while the user is typing a new filename;
+            # the per-row text above is all that's needed to keep rows distinct.
+            if renderer.props.editing:
+                return
 
             fname = model.get_value(it, fname_col)
             is_hidden = fname is not None and str(fname).startswith('.')
